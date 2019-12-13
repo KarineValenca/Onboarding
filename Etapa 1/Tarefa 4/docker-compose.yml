@@ -17,3 +17,24 @@ services:
       - prometheus
     ports:
       - "3000:3000"
+  db:
+     image: mysql:5.7
+     container_name: mysql
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: root
+       MYSQL_DATABASE: myDb
+       MYSQL_USER: root
+       MYSQL_PASSWORD: root
+  prom_mysql_exporter:
+    image: prom/mysqld-exporter
+    links:
+      - db
+    ports:
+      - '9104:9104'
+    environment:
+      DATA_SOURCE_NAME: root:root@(db:3306)/myDb
+volumes:
+    db_data: {}
