@@ -10,4 +10,4 @@ scrape_configs:
         labels: 
           alias: db1
         targets: 
-          - "localhost:9104"
+          - "prom_mysql_exporter:9104"

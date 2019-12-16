@@ -22,6 +22,8 @@ services:
      container_name: mysql
      volumes:
        - db_data:/var/lib/mysql
+     ports:
+       - "3306:3306"
      restart: always
      environment:
        MYSQL_ROOT_PASSWORD: root
@@ -30,11 +32,16 @@ services:
        MYSQL_PASSWORD: root
   prom_mysql_exporter:
     image: prom/mysqld-exporter
+    container_name: mysql_exporter
+    volumes:
+      - mysqld_data:/var/lib/mysqld
     links:
       - db
     ports:
       - '9104:9104'
     environment:
       DATA_SOURCE_NAME: root:root@(db:3306)/myDb
+    command: --config.my-cnf="/etc/.mysqld_exporter.cnf"
 volumes:
-    db_data: {}
+    db_data:
+    mysqld_data:
