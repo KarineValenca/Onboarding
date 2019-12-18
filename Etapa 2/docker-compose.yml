@@ -1,0 +1,11 @@
+version: '3.5'
+
+services: 
+  generator:
+    image: labbsr0x/metrics-generator-tabajara
+    build: .
+    environment:
+      - COMPONENT_NAME=testserver
+      - COMPONENT_VERSION=1.0.0
+    ports:
+      - 3000:3000
