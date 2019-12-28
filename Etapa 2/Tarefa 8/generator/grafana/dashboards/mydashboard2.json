@@ -1,0 +1,417 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "description": "Requests por URI",
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": 5,
+    "iteration": 1577194525098,
+    "links": [],
+    "panels": [
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "prometheus",
+        "fill": 1,
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 4,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "percentage": false,
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "repeat": "uri",
+        "repeatDirection": "v",
+        "scopedVars": {
+          "uri": {
+            "selected": true,
+            "text": "/resources/somegroup/item-0001",
+            "value": "/resources/somegroup/item-0001"
+          }
+        },
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "expr": "sum(rate(http_requests_duration_seconds_count{uri=\"$uri\"}[5m]))",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Requests por segundo ${uri}",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "prometheus",
+        "fill": 1,
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "id": 6,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "percentage": false,
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "expr": "sum(http_requests_duration_seconds_sum{uri=\"$uri\"}/http_requests_duration_seconds_count{uri=\"$uri\"})",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Tempo médio de resposta ${uri}",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      }
+    ],
+    "schemaVersion": 16,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "allValue": null,
+          "current": {
+            "text": "/resources/somegroup/item-0001",
+            "value": [
+              "/resources/somegroup/item-0001"
+            ]
+          },
+          "datasource": "prometheus",
+          "hide": 0,
+          "includeAll": false,
+          "label": null,
+          "multi": true,
+          "name": "uri",
+          "options": [
+            {
+              "selected": true,
+              "text": "/resources/somegroup/item-0001",
+              "value": "/resources/somegroup/item-0001"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0002",
+              "value": "/resources/somegroup/item-0002"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0003",
+              "value": "/resources/somegroup/item-0003"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0004",
+              "value": "/resources/somegroup/item-0004"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0005",
+              "value": "/resources/somegroup/item-0005"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0006",
+              "value": "/resources/somegroup/item-0006"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0007",
+              "value": "/resources/somegroup/item-0007"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0008",
+              "value": "/resources/somegroup/item-0008"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0009",
+              "value": "/resources/somegroup/item-0009"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0010",
+              "value": "/resources/somegroup/item-0010"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0011",
+              "value": "/resources/somegroup/item-0011"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0012",
+              "value": "/resources/somegroup/item-0012"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0013",
+              "value": "/resources/somegroup/item-0013"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0014",
+              "value": "/resources/somegroup/item-0014"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0015",
+              "value": "/resources/somegroup/item-0015"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0016",
+              "value": "/resources/somegroup/item-0016"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0017",
+              "value": "/resources/somegroup/item-0017"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0018",
+              "value": "/resources/somegroup/item-0018"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0019",
+              "value": "/resources/somegroup/item-0019"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0020",
+              "value": "/resources/somegroup/item-0020"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0021",
+              "value": "/resources/somegroup/item-0021"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0022",
+              "value": "/resources/somegroup/item-0022"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0023",
+              "value": "/resources/somegroup/item-0023"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0024",
+              "value": "/resources/somegroup/item-0024"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0025",
+              "value": "/resources/somegroup/item-0025"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0026",
+              "value": "/resources/somegroup/item-0026"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0027",
+              "value": "/resources/somegroup/item-0027"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0028",
+              "value": "/resources/somegroup/item-0028"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0029",
+              "value": "/resources/somegroup/item-0029"
+            },
+            {
+              "selected": false,
+              "text": "/resources/somegroup/item-0030",
+              "value": "/resources/somegroup/item-0030"
+            }
+          ],
+          "query": "label_values(uri)",
+          "refresh": 0,
+          "regex": "",
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "timezone": "",
+    "title": "New dashboard",
+    "uid": "oDLYGrfWk",
+    "version": 12
+  }

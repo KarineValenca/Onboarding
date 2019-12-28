@@ -1,0 +1,38 @@
+version: '3.3'
+
+services:
+
+  generator:
+    image: labbsr0x/metrics-generator-tabajara
+    build: .
+    environment:
+      - COMPONENT_NAME=testserver
+      - COMPONENT_VERSION=1.0.0
+      - ACCIDENT_RESOURCE=transaction-080
+      - ACCIDENT_TYPE=latency
+      - ACCIDENT_RATIO=100
+    ports:
+      - 3003:3000
+
+  prometheus:
+    image: flaviostutz/prometheus
+    ports:
+      - 9090:9090
+    environment:
+      - STATIC_SCRAPE_TARGETS=generator@generator:3000
+    volumes:
+      - prometheus:/prometheus
+
+  grafana:
+    build: ./grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=strongpassword
+    depends_on: 
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+volumes:
+  prometheus:
+  grafana_data: 
