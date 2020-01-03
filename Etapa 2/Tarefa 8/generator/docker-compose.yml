@@ -23,6 +23,11 @@ services:
     volumes:
       - prometheus:/prometheus
 
+  prometheus_federation:
+    build: ./prometheus
+    ports:
+      - 9091:9090
+
   grafana:
     build: ./grafana
     environment:
@@ -31,8 +36,5 @@ services:
       - prometheus
     ports:
       - 3000:3000
-    volumes:
-      - grafana_data:/var/lib/grafana
 volumes:
   prometheus:
-  grafana_data: 

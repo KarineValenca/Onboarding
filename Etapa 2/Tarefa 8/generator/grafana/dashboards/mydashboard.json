@@ -55,7 +55,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "rate(http_requests_received[5m])",
+            "expr": "rate(promhttp_metric_handler_requests_total[5m])",
             "format": "time_series",
             "intervalFactor": 1,
             "legendFormat": "",
@@ -139,7 +139,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "topk(10, sum by (uri) (http_requests_duration_seconds_sum/http_requests_duration_seconds_count))",
+            "expr": "topk(10, sum by (uri) (prometheus_http_request_duration_seconds_sum/prometheus_http_request_duration_seconds_count))",
             "format": "time_series",
             "instant": false,
             "intervalFactor": 1,
@@ -218,7 +218,7 @@
         "strokeWidth": 1,
         "targets": [
           {
-            "expr": "topk(10, sum by (uri) (rate(http_requests_duration_seconds_sum[1h])))",
+            "expr": "topk(10, sum by (uri) (rate(prometheus_http_request_duration_seconds_sum[1h])))",
             "format": "time_series",
             "intervalFactor": 1,
             "legendFormat": "",
@@ -267,7 +267,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "sum(http_requests_duration_seconds_sum/http_requests_duration_seconds_count)",
+            "expr": "sum(prometheus_http_request_duration_seconds_sum/prometheus_http_request_duration_seconds_count)",
             "format": "time_series",
             "intervalFactor": 1,
             "legendFormat": "",
@@ -355,7 +355,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "topk(10, \n    sum by(uri) (rate(http_requests_duration_seconds_sum{status=~\"4..|5..\"}[10m]))\n)",
+            "expr": "topk(10, \n    sum by(uri) (rate(prometheus_http_request_duration_seconds_sum{status=~\"4..|5..\"}[10m]))\n)",
             "format": "time_series",
             "intervalFactor": 1,
             "legendFormat": "",
@@ -446,7 +446,7 @@
         ],
         "targets": [
           {
-            "expr": "topk(10, sum by (uri) (rate(http_requests_duration_seconds_sum[1h])))",
+            "expr": "topk(10, sum by (uri) (rate(prometheus_http_request_duration_seconds_sum[1h])))",
             "format": "table",
             "intervalFactor": 1,
             "legendFormat": "",
