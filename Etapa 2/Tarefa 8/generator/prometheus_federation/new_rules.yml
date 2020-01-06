@@ -2,10 +2,10 @@ groups:
   - name: federation
     rules:
     - record: federate_n2:http_request_duration_sum:irate
-      expr: sum(irate(federate_n1:http_requests_sum:sum[5m])) without (instance)
+      expr: sum(irate(federate_n1:http_requests_sum:irate[5m])) without (instance)
       labels:
         job: federate_n2
     - record: federate_n2:http_request_duration_count:irate
-      expr: sum(irate(federate_n1:http_requests_count:count[5m])) without (instance)
+      expr: sum(sum(irate(federate_n1:http_requests_count:irate[5m])) without (instance)) by (status)
       labels:
         job: federate_n2
