@@ -1,3 +1,3 @@
 FROM prom/prometheus:latest
 ADD prometheus.yml /etc/prometheus/
-ADD rules.yml /etc/prometheus/prometheus.rules.yml
+ADD new_rules.yml /etc/prometheus/prometheus.rules.yml

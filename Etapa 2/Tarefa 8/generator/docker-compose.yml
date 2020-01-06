@@ -15,16 +15,14 @@ services:
       - 3003:3000
 
   prometheus:
-    image: flaviostutz/prometheus
+    build: ./prometheus
     ports:
       - 9090:9090
-    environment:
-      - STATIC_SCRAPE_TARGETS=generator@generator:3000
     volumes:
       - prometheus:/prometheus
 
   prometheus_federation:
-    build: ./prometheus
+    build: ./prometheus_federation
     ports:
       - 9091:9090
 

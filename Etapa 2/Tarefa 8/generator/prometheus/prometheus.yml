@@ -1,14 +1,13 @@
 scrape_configs:
-  - job_name: 'federate'
+  - job_name: 'generator'
     scrape_interval: 15s
 
     honor_labels: true
-    metrics_path: '/federate'
-
-    params:
-      'match[]':
-        - '{job="generator"}'
+    metrics_path: '/metrics'
 
     static_configs:
       - targets:
-        - 'prometheus:9090'
+        - 'generator:3000'
+
+rule_files:
+  - 'prometheus.rules.yml'

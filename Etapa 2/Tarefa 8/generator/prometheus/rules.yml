@@ -1,0 +1,11 @@
+groups:
+  - name: federate_rules
+    rules:
+    - record: federate_n1:http_requests_sum:irate
+      expr: sum(irate(http_requests_duration_seconds_sum[5m])) without (instance)
+      labels:
+        job: federate_n1
+    - record: federate_n1:http_requests_count:irate
+      expr: sum(irate(http_requests_duration_seconds_count[5m])) without (instance)
+      labels:
+        job: federate_n1
