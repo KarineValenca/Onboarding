@@ -1,0 +1,5 @@
+groups:
+  - name: example
+    rules:
+    - record: namespace:http_request_duration:sum_rate
+    expr: sum(irate(prometheus_http_request_duration_seconds_sum[5m]))

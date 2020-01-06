@@ -7,8 +7,7 @@ scrape_configs:
 
     params:
       'match[]':
-        - '{job="prometheus"}'
-        - '{__name__=~"job:.*"}'
+        - '{job="generator"}'
 
     static_configs:
       - targets:
